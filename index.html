@@ -3,339 +3,669 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Christopher Scott McClure</title>
+<title>Christopher Scott McClure — Political Theorist, Producer, Storyteller</title>
+<meta name="description" content="Christopher Scott McClure — political theorist (Georgetown Ph.D., Harvard postdoc, Cambridge University Press), documentary television producer, and audio-fiction creator.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EFE7D8;
+  --paper-card:#E4D9C2;
+  --paper-line:#cdbfa0;
+  --ink:#211D16;
+  --ink-soft:#54493a;
+  --kraft:#17140F;
+  --kraft-card:#221E17;
+  --kraft-line:#3a3327;
+  --cream:#EFE7D8;
+  --cream-soft:#b9ae98;
+  --brass:#B08D3E;
+  --brass-light:#D4B36A;
+  --stamp:#8B3A3A;
+  --stamp-ink:#7a3333;
+  --seam-gap:4px;
+}
+
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+
 body{
-margin:0;
-font-family:Inter,sans-serif;
-background:#f5f3ee;
-color:#222;
-line-height:1.7;
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
 }
 
-header{
-background:#1d2733;
-color:white;
-padding:70px 0;
+a{color:inherit;}
+a:focus-visible, button:focus-visible{outline:2px solid var(--brass-light); outline-offset:3px;}
+
+.wrap{width:min(1180px, 90%); margin:0 auto;}
+.wrap-narrow{width:min(760px, 88%); margin:0 auto;}
+
+.eyebrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
 }
 
-.container{
-width:min(1100px,92%);
-margin:auto;
-}
-
-.hero{
-display:grid;
-grid-template-columns:330px 1fr;
-gap:60px;
-align-items:center;
-}
-
-.hero img{
-width:100%;
-border-radius:8px;
-box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
-
-h1{
-font-family:"Cormorant Garamond",serif;
-font-size:72px;
-margin:0;
-line-height:1;
-}
-
-.subtitle{
-margin:20px 0;
-letter-spacing:2px;
-text-transform:uppercase;
-font-size:14px;
-color:#d4b483;
-}
-
-.hero p{
-font-size:21px;
-max-width:650px;
-}
-
+/* ============ NAV ============ */
 nav{
-background:#111;
+  position:sticky; top:0; z-index:50;
+  background:rgba(23,20,15,0.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--kraft-line);
+}
+.navrow{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 0;
+}
+.navmark{
+  font-family:'Fraunces', serif; font-weight:600; font-size:18px; color:var(--cream);
+  letter-spacing:.02em; text-decoration:none;
+}
+.navmark em{color:var(--brass-light); font-style:normal;}
+.navlinks{list-style:none; display:flex; gap:32px; margin:0; padding:0;}
+.navlinks a{
+  color:var(--cream-soft); text-decoration:none;
+  font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  transition:color .2s ease;
+}
+.navlinks a:hover{color:var(--brass-light);}
+.navtoggle{display:none;}
+
+@media(max-width:720px){
+  .navlinks{display:none;}
 }
 
-nav ul{
-margin:0;
-padding:18px;
-display:flex;
-justify-content:center;
-gap:40px;
-list-style:none;
+/* ============ HERO ============ */
+header.hero{
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(176,141,62,0.16), transparent 60%),
+    var(--kraft);
+  color:var(--cream);
+  padding:96px 0 84px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--kraft-line);
+}
+header.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(239,231,216,0.025) 0px, rgba(239,231,216,0.025) 1px, transparent 1px, transparent 3px);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:56px;
+  align-items:center;
+  position:relative;
+}
+.hero-eyebrow{color:var(--brass-light); margin-bottom:22px; display:flex; align-items:center; gap:12px;}
+.hero-eyebrow .rule{width:36px; height:1px; background:var(--brass); display:inline-block;}
+
+h1.name{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:clamp(40px, 6vw, 68px);
+  line-height:1.02;
+  margin:0 0 22px;
+  letter-spacing:-.01em;
+}
+h1.name .first{display:block; font-weight:400; font-style:italic; font-size:.5em; color:var(--cream-soft); margin-bottom:6px;}
+
+.hero-lede{
+  font-size:19px;
+  color:#d9d0bd;
+  max-width:52ch;
+  margin:0 0 32px;
+}
+.hero-lede strong{color:var(--cream); font-weight:600;}
+
+.badges{display:flex; flex-wrap:wrap; gap:10px;}
+.badge{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  border:1px solid var(--brass); color:var(--brass-light);
+  padding:7px 12px; border-radius:2px;
+  white-space:nowrap;
 }
 
-nav a{
-color:white;
-text-decoration:none;
+/* seal / monogram */
+.seal-wrap{display:flex; justify-content:center; align-items:center; position:relative;}
+.seal{
+  width:min(280px, 78%);
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1.5px solid var(--brass);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  background:radial-gradient(circle at 32% 28%, rgba(176,141,62,0.14), transparent 65%);
+}
+.seal::before{
+  content:"";
+  position:absolute; inset:14px;
+  border:1px solid var(--kraft-line);
+  border-radius:50%;
+}
+.seal-mono{
+  font-family:'Fraunces', serif;
+  font-weight:500;
+  font-size:64px;
+  color:var(--brass-light);
+  letter-spacing:.02em;
+}
+.seal-ring-text{
+  position:absolute; inset:0;
+  font-family:'JetBrains Mono', monospace;
+  font-size:10.5px;
 }
 
-section{
-padding:80px 0;
+/* ============ SECTION SCAFFOLDING ============ */
+section{padding:104px 0;}
+.section-head{margin-bottom:56px; max-width:640px;}
+.section-num{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px; letter-spacing:.15em;
+}
+h2.section-title{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:clamp(30px, 4vw, 44px);
+  margin:10px 0 0;
+  letter-spacing:-.01em;
 }
 
-h2{
-font-family:"Cormorant Garamond",serif;
-font-size:48px;
-margin-bottom:30px;
+/* ============ MANUSCRIPT (paper) SECTIONS ============ */
+.manuscript{background:var(--paper); color:var(--ink);}
+.manuscript .section-num{color:var(--ink-soft);}
+.manuscript .section-head{border-bottom:1px solid var(--paper-line); padding-bottom:28px;}
+
+.about-grid{display:grid; grid-template-columns:1fr 300px; gap:64px;}
+.dropcap-p{font-size:19px; color:var(--ink);}
+.dropcap-p::first-letter{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:76px;
+  float:left;
+  line-height:0.78;
+  padding:6px 10px 0 0;
+  color:var(--brass);
+}
+.about-grid p + p{margin-top:20px; font-size:17px; color:var(--ink-soft);}
+
+.marginalia{
+  border-left:1px solid var(--paper-line);
+  padding-left:28px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+}
+.marginalia h4{
+  font-family:'JetBrains Mono', monospace;
+  text-transform:uppercase; letter-spacing:.1em; font-size:11px;
+  color:var(--ink); margin:0 0 12px;
+}
+.marg-item{margin-bottom:18px; padding-bottom:18px; border-bottom:1px dashed var(--paper-line);}
+.marg-item:last-child{border-bottom:none; margin-bottom:0;}
+.marg-item .yr{color:var(--brass); display:block; margin-bottom:3px;}
+
+/* scholarship / footnote list */
+.folio{display:grid; grid-template-columns:280px 1fr; gap:64px; align-items:start;}
+
+.book-card{
+  background:linear-gradient(160deg, #26221a, #1c1912);
+  color:var(--cream);
+  padding:34px 26px;
+  border-radius:2px;
+  box-shadow:0 22px 40px -18px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(176,141,62,0.35);
+  position:relative;
+}
+.book-card::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:10px;
+  background:repeating-linear-gradient(180deg, rgba(176,141,62,0.5) 0px, rgba(176,141,62,0.5) 2px, transparent 2px, transparent 6px);
+}
+.book-card .press{
+  font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--brass-light); margin-bottom:16px;
+}
+.book-card h3{
+  font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+  font-size:26px; line-height:1.15; margin:0 0 14px;
+}
+.book-card p{font-size:13.5px; color:var(--cream-soft); margin:0;}
+
+.footnotes{list-style:none; margin:0; padding:0; counter-reset:fn;}
+.footnotes li{
+  counter-increment:fn;
+  display:grid; grid-template-columns:34px 1fr; gap:14px;
+  padding:18px 0; border-bottom:1px solid var(--paper-line);
+}
+.footnotes li:first-child{padding-top:0;}
+.footnotes li::before{
+  content:"§" counter(fn);
+  font-family:'JetBrains Mono', monospace;
+  color:var(--brass); font-size:13px; font-weight:600;
+}
+.footnotes .fn-title{font-weight:600; color:var(--ink); font-size:16px;}
+.footnotes .fn-meta{
+  font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--ink-soft);
+  text-transform:uppercase; letter-spacing:.05em; margin-top:2px;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
+.langs{display:flex; gap:22px; flex-wrap:wrap; margin-top:36px; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft);}
+.langs b{color:var(--ink); display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px;}
+
+/* ============ CASE FILE (kraft) SECTIONS ============ */
+.dossier{background:var(--kraft); color:var(--cream);}
+.dossier .section-num{color:var(--brass-light);}
+.dossier .section-head{border-bottom:1px solid var(--kraft-line); padding-bottom:28px;}
+.dossier .section-head .lede{color:var(--cream-soft); font-family:'Source Serif 4', serif; font-size:16.5px; margin-top:14px;}
+
+.case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+@media(max-width:900px){.case-grid{grid-template-columns:1fr;}}
+
+.case{
+  background:var(--kraft-card);
+  border:1px solid var(--kraft-line);
+  border-radius:2px;
+  padding:26px 24px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.case-tab{
+  position:absolute; top:0; right:22px;
+  background:var(--brass); color:var(--kraft);
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:9.5px; letter-spacing:.1em;
+  padding:4px 9px 5px;
+  border-radius:0 0 3px 3px;
+  text-transform:uppercase;
+}
+.case-file-no{
+  font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--cream-soft); letter-spacing:.08em;
+  margin-bottom:12px;
+}
+.case h3{
+  font-family:'Fraunces', serif; font-weight:600; font-size:21px; margin:0 0 8px; line-height:1.2;
+}
+.case .outlet{
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--brass-light); letter-spacing:.06em; text-transform:uppercase; margin-bottom:12px;
+}
+.case p.desc{font-size:14.5px; color:var(--cream-soft); margin:0;}
+.redaction{
+  display:inline-block; height:.85em; background:#0c0a08; border-radius:1px; vertical-align:middle; margin:0 2px;
 }
 
-.card{
-background:white;
-padding:20px;
-border-radius:8px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+.stamp{
+  position:absolute; bottom:16px; right:16px;
+  border:2px solid var(--stamp); color:var(--stamp);
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:10px; letter-spacing:.08em;
+  padding:5px 9px; border-radius:3px;
+  transform:rotate(-8deg);
+  opacity:.85;
 }
 
-.card img{
-width:100%;
-border-radius:4px;
-margin-bottom:15px;
+/* case log list */
+.caselog{margin-top:52px; border-top:1px solid var(--kraft-line);}
+.caselog-row{
+  display:grid; grid-template-columns:110px 1fr 200px; gap:20px; align-items:baseline;
+  padding:18px 0; border-bottom:1px solid var(--kraft-line);
+  font-size:14.5px;
+}
+.caselog-row .date{font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--brass-light);}
+.caselog-row .role{color:var(--cream-soft); font-family:'JetBrains Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; text-align:right;}
+.caselog-row .title{color:var(--cream);}
+.caselog-row .title .org{color:var(--cream-soft); font-style:italic;}
+@media(max-width:640px){
+  .caselog-row{grid-template-columns:1fr; gap:4px;}
+  .caselog-row .role{text-align:left;}
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-margin-top:50px;
+/* ============ SEAM / STATS ============ */
+.seam{
+  position:relative;
+}
+.seam-half{padding:70px 40px; text-align:center;}
+.seam-half.paper{background:var(--paper); color:var(--ink);}
+.seam-half.kraft{background:var(--kraft); color:var(--cream);}
+.seam-stat{font-family:'Fraunces', serif; font-weight:600; font-size:clamp(30px,4vw,46px); margin-bottom:6px;}
+.seam-half.paper .seam-stat{color:var(--brass);}
+.seam-half.kraft .seam-stat{color:var(--brass-light);}
+.seam-label{font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;}
+.seam-half.paper .seam-label{color:var(--ink-soft);}
+.seam-half.kraft .seam-label{color:var(--cream-soft);}
+
+.stitch{
+  position:absolute; top:0; bottom:0; left:50%; width:0;
+  border-left:2px dashed var(--brass);
+  transform:translateX(-1px);
+}
+.stitchrow{display:grid; grid-template-columns:1fr 1fr;}
+
+@media(max-width:720px){
+  .seam, .stitchrow{grid-template-columns:1fr;}
+  .stitch{display:none;}
 }
 
-.stat{
-background:white;
-padding:30px;
-text-align:center;
-border-radius:8px;
+/* ============ CONTACT ============ */
+.contact{
+  background:var(--paper);
+  padding:100px 0 90px;
+  text-align:center;
 }
-
-.number{
-font-family:"Cormorant Garamond",serif;
-font-size:42px;
-color:#8c6a3e;
+.contact-seal{
+  width:96px; height:96px; border-radius:50%;
+  border:1.5px solid var(--brass);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 30px;
+  font-family:'Fraunces', serif; font-weight:600; font-size:32px; color:var(--brass);
 }
+.contact h2{
+  font-family:'Fraunces', serif; font-weight:600; font-size:clamp(28px,4vw,40px); margin:0 0 16px;
+}
+.contact p.lede{color:var(--ink-soft); font-size:17px; max-width:52ch; margin:0 auto 34px;}
+.contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+.contact-links a{
+  font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
+  text-decoration:none; color:var(--ink);
+  border:1px solid var(--ink); padding:13px 22px; border-radius:2px;
+  transition:all .2s ease;
+}
+.contact-links a.primary{background:var(--ink); color:var(--paper);}
+.contact-links a:hover{background:var(--brass); border-color:var(--brass); color:var(--kraft);}
 
 footer{
-background:#1d2733;
-color:white;
-text-align:center;
-padding:50px;
-margin-top:60px;
+  background:var(--kraft); color:var(--cream-soft);
+  text-align:center; padding:30px 0;
+  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.08em;
+  border-top:1px solid var(--kraft-line);
 }
 
+/* ============ RESPONSIVE ============ */
 @media(max-width:900px){
-
-.hero{
-grid-template-columns:1fr;
+  .hero-grid{grid-template-columns:1fr; text-align:left;}
+  .seal-wrap{order:-1; margin-bottom:10px;}
+  .seal{width:180px;}
+  .about-grid{grid-template-columns:1fr;}
+  .marginalia{border-left:none; border-top:1px solid var(--paper-line); padding-left:0; padding-top:24px;}
+  .folio{grid-template-columns:1fr;}
+  section{padding:72px 0;}
 }
-
-h1{
-font-size:52px;
-}
-
-.stats{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:600px){
-
-.stats{
-grid-template-columns:1fr;
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
-<header>
-
-<div class="container">
-
-<div class="hero">
-
-<img src="portrait.jpg" alt="Christopher Scott McClure">
-
-<div>
-
-<div class="subtitle">
-Political Theorist • Writer • Producer
-</div>
-
-<h1>Christopher Scott McClure</h1>
-
-<p>
-
-I am a political theorist specializing in the history of political philosophy. My scholarship explores mortality, uncertainty, religion, and existentialism in the history of political thought, particularly in Hobbes and Nietzsche. Those same questions animate my fiction podcasts and documentary television work, where stories become another way of examining how human beings search for meaning in the modern world.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-
 <nav>
-
-<ul>
-
-<li><a href="#about">About</a></li>
-<li><a href="#work">Featured Work</a></li>
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
+  <div class="wrap navrow">
+    <a class="navmark" href="#top">C<em>·</em>S<em>·</em>M</a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#scholarship">Scholarship</a></li>
+      <li><a href="#screen">Story &amp; Screen</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<section id="about">
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow eyebrow"><span class="rule"></span>Toronto, Canada</div>
+      <h1 class="name">
+        <span class="first">Political theorist. Producer. Storyteller.</span>
+        Christopher Scott McClure
+      </h1>
+      <p class="hero-lede">
+        I study how people make meaning under uncertainty &mdash; in <strong>Hobbes and Nietzsche</strong>,
+        and in the true-crime cases and fiction podcasts I write and produce.
+        A Cambridge University Press book and a Georgetown Ph.D. sit on one shelf;
+        <strong>FBI True</strong>, <strong>Never Seen Again</strong>, and two award-winning audio dramas
+        sit on the other. This is the record of both.
+      </p>
+      <div class="badges">
+        <span class="badge">Ph.D., Georgetown</span>
+        <span class="badge">Harvard Postdoctoral Fellow</span>
+        <span class="badge">Cambridge University Press</span>
+        <span class="badge">Hillman Prize Nominee</span>
+      </div>
+    </div>
+    <div class="seal-wrap">
+      <div class="seal">
+        <span class="seal-mono">CSM</span>
+      </div>
+    </div>
+  </div>
+</header>
 
-<div class="container">
-
-<h2>About</h2>
-
-<p>
-
-Christopher Scott McClure received his Ph.D. in Government from Georgetown University and was a Postdoctoral Fellow in Harvard University's Program on Constitutional Government. He is the author of <em>Hobbes and the Artifice of Eternity</em> (Cambridge University Press) and creator of award-winning fiction podcasts with more than 900,000 downloads. Alongside his academic work, he has produced documentary television for Paramount+, Discovery+, and CBS.
-
-</p>
-
-<div class="stats">
-
-<div class="stat">
-
-<div class="number">900K+</div>
-
-Podcast Downloads
-
-</div>
-
-<div class="stat">
-
-<div class="number">Cambridge</div>
-
-University Press
-
-</div>
-
-<div class="stat">
-
-<div class="number">Harvard</div>
-
-Postdoctoral Fellow
-
-</div>
-
-<div class="stat">
-
-<div class="number">Georgetown</div>
-
-Ph.D.
-
-</div>
-
-</div>
-
-</div>
-
+<!-- ABOUT — manuscript register -->
+<section class="manuscript" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">FOLIO I</div>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="dropcap-p">Christopher Scott McClure received his Ph.D. in Government from Georgetown
+        University and was a Postdoctoral Fellow in Harvard University&rsquo;s Program on Constitutional
+        Government. He is the author of <em>Hobbes and the Artifice of Eternity</em> (Cambridge University
+        Press), which examines how Hobbes reimagines mortality, uncertainty, and meaning at the founding
+        of modern political thought.</p>
+        <p>That same set of questions &mdash; how people search for order and significance when the old
+        certainties fall away &mdash; carries directly into his work in documentary television and audio
+        fiction. As a producer on <em>FBI True</em> and <em>Never Seen Again</em> (both Paramount+), he has
+        booked stories, conducted field interviews, and story-edited episodes built around real
+        investigations. As the creator of two independent fiction podcasts, <em>Harvey in Hell</em> and the
+        award-winning <em>The Milkman of St. Gaff&rsquo;s</em>, he writes and produces original narrative
+        work supported by the Canada Council for the Arts.</p>
+        <p>He also co-hosts <em>The Reading Group</em>, a podcast working through Plato&rsquo;s dialogues
+        in conversation with fellow political theorists.</p>
+      </div>
+      <aside class="marginalia">
+        <h4>Colophon</h4>
+        <div class="marg-item"><span class="yr">2016</span>Hobbes and the Artifice of Eternity, Cambridge University Press</div>
+        <div class="marg-item"><span class="yr">2013&ndash;15</span>Postdoctoral Fellow, Harvard University</div>
+        <div class="marg-item"><span class="yr">2011</span>Ph.D., Government, Georgetown University</div>
+        <div class="marg-item"><span class="yr">2022</span>Hillman Prize nominee, Broadcast Journalism</div>
+        <div class="marg-item"><span class="yr">2025</span>Canada Council grant, <em>Harvey in Hell</em></div>
+      </aside>
+    </div>
+  </div>
 </section>
 
-<section id="work">
-
-<div class="container">
-
-<h2>Featured Work</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<img src="hobbes" alt="Hobbes">
-
-<h3>Hobbes and the Artifice of Eternity</h3>
-
-<p>Cambridge University Press.</p>
-
-</div>
-
-<div class="card">
-
-<img src="harvey" alt="Harvey in Hell">
-
-<h3>Harvey in Hell</h3>
-
-<p>A supernatural mystery exploring memory, evil, and redemption.</p>
-
-</div>
-
-<div class="card">
-
-<img src="milkman" alt="Milkman">
-
-<h3>The Milkman of St. Gaff's</h3>
-
-<p>An award-winning mystery podcast about isolation, memory, and belonging.</p>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- SCHOLARSHIP — manuscript register -->
+<section class="manuscript" id="scholarship" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">FOLIO II</div>
+      <h2 class="section-title">Scholarship &amp; Teaching</h2>
+    </div>
+    <div class="folio">
+      <div class="book-card">
+        <div class="press">Cambridge University Press &middot; 2016</div>
+        <h3>Hobbes and the Artifice of Eternity</h3>
+        <p>A study of mortality, uncertainty, and the political imagination in the work of Thomas
+        Hobbes &mdash; and how the search for permanence shapes the modern state.</p>
+      </div>
+      <ul class="footnotes">
+        <li>
+          <div>
+            <div class="fn-title">Part-Time Lecturer &mdash; Nietzsche Seminar</div>
+            <div class="fn-meta">Tufts University &middot; Fall 2024, remote</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="fn-title">Postdoctoral Fellow</div>
+            <div class="fn-meta">Harvard University, Program on Constitutional Government &middot; 2013&ndash;2015</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="fn-title">Visiting Assistant Professor</div>
+            <div class="fn-meta">University of California, Davis &middot; 2011&ndash;2013</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="fn-title">Ph.D., Government</div>
+            <div class="fn-meta">Georgetown University &middot; 2005&ndash;2011</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="fn-title">M.A., Political Science &middot; B.A., Political Science</div>
+            <div class="fn-meta">University of Toronto &middot; 2003&ndash;2004, 1999&ndash;2003</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="langs">
+      <div><b>French</b>Full working proficiency</div>
+      <div><b>Italian</b>Working proficiency</div>
+      <div><b>Classical Greek</b>Basic reading</div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
+<!-- STORY & SCREEN — case file register -->
+<section class="dossier" id="screen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">CASE FILE II</div>
+      <h2 class="section-title">Story &amp; Screen</h2>
+      <p class="lede">Fifteen years producing documentary television, and five years writing and
+      producing independent audio fiction &mdash; booking stories, chasing sources, and shaping
+      narrative from both sides of the camera.</p>
+    </div>
 
-<div class="container">
+    <div class="case-grid">
+      <div class="case">
+        <span class="case-tab">On Air</span>
+        <div class="case-file-no">DOC &middot; PARAMOUNT+</div>
+        <h3>FBI True</h3>
+        <div class="outlet">Producer &middot; 2023&ndash;2025</div>
+        <p class="desc">Booked stories, conducted field interviews, and story-edited fifteen episodes
+        of the true-crime documentary series.</p>
+      </div>
+      <div class="case">
+        <span class="case-tab">Nominated</span>
+        <div class="case-file-no">DOC &middot; PARAMOUNT+</div>
+        <h3>Never Seen Again</h3>
+        <div class="outlet">Producer &middot; 2022&ndash;2023</div>
+        <p class="desc">Booked stories and story-edited five episodes. Season opener nominated for a
+        Hillman Prize in Broadcast Journalism.</p>
+        <span class="stamp">Hillman</span>
+      </div>
+      <div class="case">
+        <span class="case-tab">Grant Winner</span>
+        <div class="case-file-no">AUDIO FICTION &middot; ORIGINAL</div>
+        <h3>Harvey in Hell</h3>
+        <div class="outlet">Writer &amp; Producer &middot; 2025&ndash;Present</div>
+        <p class="desc">An independent audio drama, written, recorded, and produced end-to-end.
+        Supported by a Canada Council for the Arts grant.</p>
+      </div>
+      <div class="case">
+        <span class="case-tab">Award Winner</span>
+        <div class="case-file-no">AUDIO FICTION &middot; ORIGINAL</div>
+        <h3>The Milkman of St. Gaff&rsquo;s</h3>
+        <div class="outlet">Writer &amp; Producer &middot; 2020&ndash;2023</div>
+        <p class="desc">Best Production and Best Storyteller, 2022 Audio Verse Awards. Over 750,000
+        downloads and a devoted following.</p>
+        <span class="stamp">Verified</span>
+      </div>
+      <div class="case">
+        <span class="case-tab">Season 1</span>
+        <div class="case-file-no">DOC &middot; SERIES PRODUCER</div>
+        <h3>Special Ops True</h3>
+        <div class="outlet">Series Producer &middot; Bright North Studios</div>
+        <p class="desc">Managed a team of story editors and oversaw post-production, edits, and audio
+        mastering for the first season.</p>
+      </div>
+      <div class="case">
+        <span class="case-tab">Discovery+</span>
+        <div class="case-file-no">DOC &middot; ASSOCIATE PRODUCER</div>
+        <h3>Who the Bleep Did I Marry</h3>
+        <div class="outlet">Associate Producer &middot; 2022</div>
+        <p class="desc">Found stories and chased sources; booked stories for the long-running
+        Discovery+ true-crime series.</p>
+      </div>
+    </div>
 
-<h2>Contact</h2>
+    <div class="caselog">
+      <div class="caselog-row">
+        <span class="date">2024&ndash;25</span>
+        <span class="title">Series Producer / Producer <span class="org">&mdash; Bright North Studios</span></span>
+        <span class="role">Toronto</span>
+      </div>
+      <div class="caselog-row">
+        <span class="date">2020</span>
+        <span class="title">TV Writing &amp; Production <span class="org">&mdash; Humber College</span></span>
+        <span class="role">Certificate</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-
-Email:
-<a href="mailto:chris.mcclure@gmail.com">chris.mcclure@gmail.com</a>
-
-</p>
-
-<p>
-
-<a href="https://harveyinhell.com">Harvey in Hell</a> |
-<a href="https://howiemilkman.com">The Milkman of St. Gaff's</a>
-
-</p>
-
+<!-- SEAM / STATS -->
+<div class="seam">
+  <div class="stitch"></div>
+  <div class="stitchrow">
+    <div class="seam-half paper">
+      <div class="seam-stat">10+</div>
+      <div class="seam-label">Years in Political Theory</div>
+    </div>
+    <div class="seam-half kraft">
+      <div class="seam-stat">15+</div>
+      <div class="seam-label">Years Producing Television</div>
+    </div>
+  </div>
+  <div class="stitchrow">
+    <div class="seam-half paper">
+      <div class="seam-stat">750K+</div>
+      <div class="seam-label">Podcast Downloads</div>
+    </div>
+    <div class="seam-half kraft">
+      <div class="seam-stat">2</div>
+      <div class="seam-label">Canada Council Grants</div>
+    </div>
+  </div>
 </div>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap-narrow">
+    <div class="contact-seal">CSM</div>
+    <h2>Get in touch</h2>
+    <p class="lede">Whether it&rsquo;s a story to book, a text to read closely, or a project that
+    needs both &mdash; I&rsquo;d like to hear about it.</p>
+    <div class="contact-links">
+      <a class="primary" href="mailto:chris.mcclure@gmail.com">chris.mcclure@gmail.com</a>
+      <a href="tel:+16475701461">1&nbsp;647&nbsp;570&nbsp;1461</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-Christopher Scott McClure
-
+  Christopher Scott McClure &middot; Toronto, Canada
 </footer>
 
 </body>
-
 </html>
