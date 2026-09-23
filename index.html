@@ -279,6 +279,15 @@
     padding:8px;
     background:var(--paper-deep);
     align-self:start;
+    transition:border-color .15s;
+  }
+
+  .cover-link{
+    display:block;
+  }
+
+  .cover-link:hover .cover-frame{
+    border-color:var(--brick);
   }
 
   .cover-frame img{
@@ -291,6 +300,15 @@
     font-weight:600;
     font-size:20px;
     margin:16px 0 4px;
+  }
+
+  .book-title a{
+    color:var(--ink);
+    text-decoration:none;
+  }
+
+  .book-title a:hover{
+    color:var(--brick);
   }
 
   .book-pub{
@@ -442,6 +460,18 @@
     border-bottom:1px solid var(--rule);
   }
 
+  .credit-list a{
+    color:var(--ink);
+    text-decoration:underline;
+    text-decoration-color:var(--rule);
+    text-underline-offset:3px;
+  }
+
+  .credit-list a:hover{
+    color:var(--brick);
+    text-decoration-color:var(--brick);
+  }
+
   .credit-list .yr{
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
@@ -504,7 +534,7 @@
       grid-template-columns:1fr;
     }
 
-    .cover-frame{
+    .cover-link{
       max-width:200px;
     }
 
@@ -625,7 +655,8 @@
         </div>
 
         <div class="cta-row">
-          <a class="btn primary" href="#research">Research &amp; CV</a>
+          <a class="btn primary" href="#research">Research</a>
+          <a class="btn" href="McClure_CV_2026.pdf" target="_blank" rel="noopener">CV</a>
           <a class="btn" href="mailto:chris.mcclure@gmail.com">Get in touch</a>
         </div>
       </div>
@@ -652,11 +683,13 @@
       <div class="research-grid">
 
         <div>
-          <div class="cover-frame">
-            <img src="hobbes-cover.jpg" alt="Cover of Hobbes and the Artifice of Eternity">
-          </div>
+          <a class="cover-link" href="https://www.cambridge.org/core/books/hobbes-and-the-artifice-of-eternity/B4592A3CE101D3DA229E834192D856B0" target="_blank" rel="noopener">
+            <div class="cover-frame">
+              <img src="hobbes-cover.jpg" alt="Cover of Hobbes and the Artifice of Eternity">
+            </div>
+          </a>
 
-          <p class="book-title">Hobbes and the Artifice of Eternity</p>
+          <p class="book-title"><a href="https://www.cambridge.org/core/books/hobbes-and-the-artifice-of-eternity/B4592A3CE101D3DA229E834192D856B0" target="_blank" rel="noopener">Hobbes and the Artifice of Eternity</a></p>
           <p class="book-pub">Cambridge University Press, 2016</p>
         </div>
 
@@ -814,12 +847,12 @@
           </li>
 
           <li>
-            <span>Creator &amp; producer, <em>The Milkman of St. Gaff's</em></span>
+            <span>Creator &amp; producer, <a href="https://howiemilkman.com" target="_blank" rel="noopener"><em>The Milkman of St. Gaff's</em></a></span>
             <span class="yr">2020&ndash;</span>
           </li>
 
           <li>
-            <span>Creator &amp; producer, <em>Harvey in Hell</em></span>
+            <span>Creator &amp; producer, <a href="https://harveyinhell.com" target="_blank" rel="noopener"><em>Harvey in Hell</em></a></span>
             <span class="yr">2026&ndash;</span>
           </li>
 
@@ -846,7 +879,7 @@
 
         <div class="footer-links">
           <a class="btn" href="mailto:chris.mcclure@gmail.com">chris.mcclure@gmail.com</a>
-          <a class="btn" href="McClure_CV.pdf">Download CV</a>
+          <a class="btn" href="McClure_CV_2026.pdf" target="_blank" rel="noopener">Download CV</a>
         </div>
 
       </div>
