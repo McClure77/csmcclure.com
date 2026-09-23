@@ -893,5 +893,48 @@
 
 </main>
 
+<!-- VISIT ALERTS -->
+<script>
+(function(){
+
+  // ===== PASTE YOUR WEB APP URL BETWEEN THE QUOTE MARKS BELOW =====
+  var SCRIPT_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
+  // =================================================================
+
+  // Skip search engines and other bots
+  if (/bot|crawl|spider|slurp|preview|facebookexternalhit|headless|lighthouse/i.test(navigator.userAgent)) return;
+
+  // Skip my own visits (turned on by visiting csmcclure.com/?notrack once)
+  try {
+    if (location.search.indexOf('notrack') !== -1) localStorage.setItem('csm_notrack', '1');
+    if (localStorage.getItem('csm_notrack') === '1') return;
+  } catch (e) {}
+
+  // Only one email per visit, even if they reload the page
+  try {
+    if (sessionStorage.getItem('csm_sent')) return;
+    sessionStorage.setItem('csm_sent', '1');
+  } catch (e) {}
+
+  function send(d){
+    var params = new URLSearchParams({
+      city: d.city || '',
+      region: d.region || '',
+      country: d.country_name || '',
+      org: d.org || '',
+      referrer: document.referrer || '',
+      device: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Phone' : 'Computer or tablet'
+    });
+    fetch(SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' });
+  }
+
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(send)
+    .catch(function(){ send({}); });
+
+})();
+</script>
+
 </body>
 </html>
